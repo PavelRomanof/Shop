@@ -8,7 +8,7 @@ User = get_user_model()
 
 class LatestProductsManager:
     @staticmethod
-    def get_products_for_main_page( *args, **kwargs):
+    def get_products_for_main_page(*args, **kwargs):
         with_respect_to = kwargs.get('with_respect_to')
         products = []
         ct_models = ContentType.objects.filter(model_in=args)
@@ -19,9 +19,9 @@ class LatestProductsManager:
             ct_models = ContentType.objects.filter(models=with_respect_to)
             if ct_models.exists():
                 if with_respect_to in args:
-                     return sorted(
-                         products, key=lambda x: x.__class__._meta.model_name.startswith(with_respect_to),reverse=True
-                     )
+                    return sorted(
+                        products, key=lambda x: x.__class__._meta.model_name.startswith(with_respect_to), reverse=True
+                    )
         return products
 
 
@@ -38,7 +38,6 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-
     class Meta:
         abstract = True
 
@@ -95,7 +94,7 @@ class CartProduct(models.Model):
 
 class Cart(models.Model):
     owner = models.ForeignKey('Customer', verbose_name='Покуатель', on_delete=models.CASCADE)
-    product = models.ManyToManyField(CartProduct, blank=True, related_name= 'related_cart')
+    product = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
     total_product = models.PositiveIntegerField(default=0)
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
 
@@ -110,6 +109,3 @@ class Customer(models.Model):
 
     def __str__(self):
         return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
-
-
-
