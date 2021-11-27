@@ -1,28 +1,34 @@
+from PIL import Image
 from django.contrib import admin
 from .models import *
 from django.forms import ModelChoiceField, ModelForm
-from PIL import Image
+from django.utils.safestring import mark_safe
 
 
 class NotebookAdminForm(ModelForm):
 
-    MIN_RESOLUTION = (400,400)
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["image"].help_text = "Изображение с небольшим разрешением {}x{}".format(*self.MIN_RESOLUTION)
+        self.fields["image"].help_text = mark_safe(
+            "<span style='color:red; fonr-size:14px;> Изображение с небольшим разрешением {}x{}</span>".format(
+                *Product.MIN_RESOLUTION)
+        )
 
     def clean_image(self):
         image = self.cleaned_data['image']
         img = Image.open(image)
-        min_width, min_height= self.MIN_RESOLUTION
+        min_width, min_height = Product.MIN_RESOLUTION
+        max_width, max_height = Product.MAX_RESOLUTION
+        if image.size > Product.MAX_IMAGE_SIZE:
+            raise ValidationError('Не более 3 MB')
         if img.height < min_height or img.width < min_width:
             raise ValidationError('изображение меньше минимального разрешения')
-        return image
+        if img.height > max_height or img.width > max_width:
+            raise ValidationError('изображение больше максимального')
+        super().save(*args, *kwargs)
 
 
 class NotebookAdmin(admin.ModelAdmin):
-
     form = NotebookAdminForm
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
