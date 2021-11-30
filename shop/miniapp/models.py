@@ -9,7 +9,15 @@ User = get_user_model()
 
 def get_product_url(odj, urlpattern_name, model_name, obj=None, view_name=None):
     ct_model = obj.__class__._meta.model_name
-    return reverse(view_name, kwargs={'ct_model': ct_model, 'slug':obj.slug})
+    return reverse(view_name, kwargs={'ct_model': ct_model, 'slug': obj.slug})
+
+
+class MinResolutionErrorException(Exception):
+    pass
+
+
+class MaxResolutionErrorException(Exception):
+    pass
 
 
 class LatestProductsManager:
