@@ -129,3 +129,10 @@ class Customer(models.Model):
 
     def __str__(self):
         return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
+
+
+class SomeModel(models.Model):
+    image = models.ImageField()
+
+    def __str__(self):
+        return str(self.id)

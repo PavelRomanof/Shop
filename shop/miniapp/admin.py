@@ -26,11 +26,13 @@ from .models import *
 #         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-admin.site.register(Category)
+
 # admin.site.register(Notebook, NotebookAdmin)
 # admin.site.register(Smartphone, SmartphoneAdmin)
+admin.site.register(Category)
+admin.site.register(Notebook)
+admin.site.register(Smartphone)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
-admin.site.register(Notebook)
-admin.site.register(Smartphone)
+admin.site.register(SomeModel)

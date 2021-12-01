@@ -2,6 +2,18 @@
 
 {% block content %}
 
-{{ product.title }}
+<div class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <img src="{{ product.image.url }}" class="img-fluid">
+
+    </div>
+    <div class="container px-4 px-lg-5 mt-5">
+        <h3>{{ product. title}}</h3>
+        <p>Цена: {{ product.price }} <p>
+        <p>Описание: {{ product.description }}</p>
+        <p>Характеристики: </p>
+
+    </div>
+</div>
 
 {% endblock content %}
