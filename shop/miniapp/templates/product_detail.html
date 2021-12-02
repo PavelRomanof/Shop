@@ -18,6 +18,12 @@
         <p>Описание: {{ product.description }}</p>
     </div>
     <p>Характеристики: </p>
-    {% include 'notebook_specification.html' %}
+
+    {% if product.category.slug == 'notebook' %}
+        {% include 'notebook_specification.html' %}
+    {% else %}
+        {% include 'smartphone_specification.html' %}
+    {% endif %}
+
 </div>
 {% endblock %}

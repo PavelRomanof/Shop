@@ -25,19 +25,13 @@
     </tr>
     <tr>
         <td>Видеокарта</td>
-        <td>{{ product.video}}</td>
+        <td>{{product.video}}</td>
     </tr>
     <tr>
         <td>Время работы</td>
-        <td>{{ product.time_without_charge}}</td>
+        <td>{{product.time_without_charge}}</td>
     </tr>
     </tbody>
 </table>
 </body>
 </html>
-
-
-
-
-    video = models.CharField(max_length=255, verbose_name='Видеокарта')
-    time_without_charge = models.CharField(max_length=255, verbose_name='Время работы')
