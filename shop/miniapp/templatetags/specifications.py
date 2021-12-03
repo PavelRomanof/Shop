@@ -35,7 +35,7 @@ PRODUCT_SPEC = {
         'Разрешение экрана': 'resolution',
         'Емкость батареи': 'accum_volume',
         'Оперативная память': 'ram',
-        'Обьем памяти': 'd_volume_max',
+        'Обьем памяти': 'sd_volume_max',
         'Камера Главная': 'mini_cam_mp',
         'Фронтальная камера': 'frontal_cam_mp',
     },

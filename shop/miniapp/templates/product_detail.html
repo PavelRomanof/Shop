@@ -23,11 +23,13 @@
         {{ product|product_spec  }}
 
 
-        {% if product.category.slug == 'smartphone' %}
-            {% include 'smartphone_specification.html' %}
-        {% else %}
-            {% include 'notebook_specification.html' %}
-        {% endif %}
+<!--второй способ получения характеристи-->
+
+<!--        {% if product.category.slug == 'smartphone' %}-->
+<!--            {% include 'smartphone_specification.html' %}-->
+<!--        {% else %}-->
+<!--            {% include 'notebook_specification.html' %}-->
+<!--        {% endif %}-->
 
     </div>
 </div>

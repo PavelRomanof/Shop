@@ -109,14 +109,16 @@ class CartProduct(models.Model):
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
 
     def __str__(self):
-        return "Продукт: {}(Для корзины)".format(self.product.title)
+        return "Продукт: {}(Для корзины)".format(self.content_object.title)
 
 
 class Cart(models.Model):
     owner = models.ForeignKey('Customer', verbose_name='Покуатель', on_delete=models.CASCADE)
-    product = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
+    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
     total_product = models.PositiveIntegerField(default=0)
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
+    in_order = models.BooleanField(default=False)
+    for_anonymous_user = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)
