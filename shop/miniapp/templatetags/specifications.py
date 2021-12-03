@@ -7,6 +7,7 @@ TABLE_HEAD = """
                 <table class="table">
                     <tbody>
              """
+
 TABLE_TAIL = """
                    </tbody>
                 </table>
@@ -18,25 +19,26 @@ TABLE_CONTENT = """
                         <td>{value}</td>
                     </tr>
                 """
+
 PRODUCT_SPEC = {
     'notebook': {
-        'Частота процессора': 'product.processor_freq',
-        'Диагональ': 'product.diagonal',
-        'Тип дисплея': 'product.display_type',
-        'Оперативная память': 'product.ram',
-        'Видеокарта': 'product.video',
-        'Время работы': 'product.time_without_charge',
+        'Частота процессора': 'processor_freq',
+        'Диагональ': 'diagonal',
+        'Тип дисплея': 'display_type',
+        'Оперативная память': 'ram',
+        'Видеокарта': 'video',
+        'Время работы': 'time_without_charge',
     },
     'smartphone': {
-        'Диагональ': 'product.diagonal',
-        'Тип дисплея': 'product.display_type',
-        'Разрешение экрана': 'product.resolution',
-        'Емкость батареи': 'product.accum_volume',
-        'Оперативная память': 'product.ram',
-        'Обьем памяти': 'product.sd_volume_max',
-        'Камера Главная': 'product.mini_cam_mp',
-        'Фронтальная камера': 'product.frontal_cam_mp',
-    }
+        'Диагональ': 'diagonal',
+        'Тип дисплея': 'display_type',
+        'Разрешение экрана': 'resolution',
+        'Емкость батареи': 'accum_volume',
+        'Оперативная память': 'ram',
+        'Обьем памяти': 'd_volume_max',
+        'Камера Главная': 'mini_cam_mp',
+        'Фронтальная камера': 'frontal_cam_mp',
+    },
 }
 
 
