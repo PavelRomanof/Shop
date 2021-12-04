@@ -7,6 +7,8 @@ from django.urls import reverse
 User = get_user_model()
 
 """возможно error проверить """
+
+
 def get_product_url(odj, viewname, obj=None):
     ct_model = obj.__class__._meta.model_name
     return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
@@ -97,6 +99,12 @@ class Smartphone(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
+
+    # @property
+    # def sd(self):
+    #     if self.sd:
+    #         return 'ДА'
+    #     return 'НЕТ'
 
 
 class CartProduct(models.Model):
