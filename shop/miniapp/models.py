@@ -6,8 +6,8 @@ from django.urls import reverse
 
 User = get_user_model()
 
-
-def get_product_url(odj, viewname):
+"""возможно error проверить """
+def get_product_url(odj, viewname, obj=None):
     ct_model = obj.__class__._meta.model_name
     return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
 
@@ -87,8 +87,8 @@ class Smartphone(Product):
     resolution = models.CharField(max_length=255, verbose_name='Разрешение экрана')
     accum_volume = models.CharField(max_length=255, verbose_name='Емкость батареи')
     ram = models.CharField(max_length=255, verbose_name='Оперативная память')
-    sd = models.BooleanField(default=True)
-    sd_volume_max = models.CharField(max_length=255, verbose_name='Обьем памяти')
+    sd = models.BooleanField(default=True, verbose_name='Наличие SD карты')
+    sd_volume_max = models.CharField(max_length=255,null=True, blank=True, verbose_name='Объем памяти мах.')
     mini_cam_mp = models.CharField(max_length=255, verbose_name='Камера Главная')
     frontal_cam_mp = models.CharField(max_length=255, verbose_name='Фронтальная камера')
 
