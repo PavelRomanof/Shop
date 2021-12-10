@@ -11,10 +11,8 @@ class SmartphoneAdminForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         instance = kwargs.get('instance')
-        if not instance.sd:
-            self.fields['sd_volume_max'].widget.attrs.update({
-                'readonly':True, 'style': 'background: lightgrey'
-            })
+        if not instance:
+            self.fields['sd_volume_max'].widget.attrs.update({'readonly':True, 'style': 'background: lightgrey'})
 
     def clean(self):
         if not self.cleaned_data['sd']:

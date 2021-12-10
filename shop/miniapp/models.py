@@ -6,8 +6,6 @@ from django.urls import reverse
 
 User = get_user_model()
 
-"""возможно error проверить """
-
 
 def get_models_for_count(*model_names):
     return [models.Count(model_name) for model_name in model_names]
@@ -111,7 +109,7 @@ class Smartphone(Product):
     accum_volume = models.CharField(max_length=255, verbose_name='Емкость батареи')
     ram = models.CharField(max_length=255, verbose_name='Оперативная память')
     sd = models.BooleanField(default=True, verbose_name='Наличие SD карты')
-    sd_volume_max = models.CharField(max_length=255,null=True, blank=True, verbose_name='Объем памяти мах.')
+    sd_volume_max = models.CharField(max_length=255, null=True, blank=True, verbose_name='Объем памяти мах.')
     mini_cam_mp = models.CharField(max_length=255, verbose_name='Камера Главная')
     frontal_cam_mp = models.CharField(max_length=255, verbose_name='Фронтальная камера')
 
